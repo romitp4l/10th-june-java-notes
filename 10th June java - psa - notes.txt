@@ -1,0 +1,139 @@
+###############################################
+Core Java Notes  - 17th June 2025  - 10th June
+###############################################
+
+What is a class?
+------------------------
+-> Class helps us to create object in java
+-> In java we use class keyword to create class.
+-> Keyword should be in lower case
+Example :
+
+class A {
+
+}
+-> We define the boundary of class using flower brackets
+
+Class Naming Convention
+#######################
+-> Class name should always start with upper case
+-> If the class has more than one word then use camel casing, that is
+first letter of every word should be in upper case
+
+
+Example: Correct
+-------
+class Bank {
+
+}
+Example: Correct
+-------
+class BankAccountNumber {
+
+}
+Example: InCorrect
+-------
+class Bank Account Number {
+
+}
+
+Example:
+----------
+-> Snake Casing-->Should not use for java
+-> Will Execute without any error
+
+public class Bank_Account_Number {
+ 
+}
+
+Example: Class name cannot start with a number
+----------------------------------------------
+-> Will give error
+public class 1Bank {
+  public static void main(String[] args){
+     
+  }
+}
+
+Example:Class name can start with a character follwed by Number
+---------
+public class Bank1 {
+  public static void main(String[] args){
+     
+  }
+}
+
+Note:
+1. Donot use specials characters like #,@ % & etc while creating class
+2. $Class name will execute. But never create a class with special character $
+
+
+Example:Correct, but not recommended
+___________
+public class $A {
+	public static void main(String[] args) {
+	
+	}
+}
+
+Example: For Creating objects in java
+---------------------------------------
+
+public class A {
+  public static void main(String[] args){
+     A a1 = new A();
+     A a2 = new A();
+     System.out.println(a1);
+     System.out.println(a2);
+  }
+}
+
+new keyword:
+##############
+
+-> Using new keyword we send request to class to create object
+-> Once object is created new keyword will get objects's address and stores that in a reference variable
+
+Syntax to create object:
+-------------------------
+ClassName variableName = new ClassName();
+
+
+Non-static Variable/ Instance Variable /Object Variables
+############################################################
+1. We should create non static variable inside class outside method without using static keyword
+2. Without creating object we cannot access non static variable
+
+
+Example 1:
+-----------
+package p1;
+public class A {
+	int x = 10;
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+	}
+}
+Ouput: 10
+
+
+Example 2:
+----------
+
+public class A {
+	int x = 10;
+	int y = 20;
+	public static void main(String[] args) {
+		A a1 = new A();
+		System.out.println(a1.x);
+		System.out.println(a1.y);
+	}
+}
+Output:
+10
+20
+
+
+
+
