@@ -443,4 +443,12 @@ public class A {
 	
 }
 
+Note:
+Stack - > LIFO (Last In First Out)
+Heap - > Objects are created inside heap memory
+Garbage Collector - > Manages Memory to avoid overflow of memory by constantly removing objects that is not is use from heap memory
+
+Heap and stack memory
+#####################
+
 
