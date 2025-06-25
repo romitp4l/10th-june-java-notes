@@ -1084,15 +1084,252 @@ Output
 10
 10
 
+-> this keyword hold's current object address that is executing
+
+Example:
+-------
+public class A {
+	public static void main(String[] args) {
+		A a1 = new A();
+		a1.test();
+		
+		A a2 = new A();
+		a2.test();
+		a1.test();
+		
+	}
+	public void test() {
+		System.out.println(this);
+	}
+	
+}
+Output:
+p1.A@79fc0f2f
+p1.A@50040f0c
+p1.A@79fc0f2f
+
+this()- This syntax is used to call constructor
+--------------------------------------------
+-> Using this() keyword we can call a constructor
 
 
+Example:
+-------
+public class A {
+	A(){
+		System.out.println("A");
+	}
+	A(int x){
+		this();
+	}
+	public static void main(String[] args) {
+	   A a1 = new A(100);
+	}
+	
+}
+Output:
+A
 
+-> While calling a constructor using this() keyword, ensure calling is done from another constructor only
 
+Example:
+--------
+public class A {
+	A(){
+		System.out.println("A");
+	}
+	A(int x){
+		this();
+	}
+	public static void main(String[] args) {
+	   A a1 = new A(100);
+	}
+	public void test() {
+		this();//Error, we cannot call constructor from method
+	}
+	
+}
 
+Example:
+---------
+public class A {
+	A(int x){
+		System.out.println(x);
+	}
+	A(){
+		this(100);
+	}
+	public static void main(String[] args) {
+	   A a1 = new A();
+	}
+	
+	
+}
+Output
+100
 
+-> While calling a constructor using this() keyword ensure it is always first statement inside another constructor
 
+Example:
+---------
+public class A {
+	A(int x){
+		System.out.println(x);
+	}
+	A(){
+		System.out.println(200);
+		this(100);//Error because it cannot be second statement while calling constructor
+		
+	}
+	public static void main(String[] args) {
+	   A a1 = new A();
+	}
+	
+	
+}
 
+Example:
+---------
+public class A {
+	int x;//-->0
+	A(int x){////Step 4-->x=100
+		this.x=x;//Step 5
+		System.out.println(this.x);//Step 6===>100
+	}
+	A(){//Step 2
+		this(100);//Step 3
+	}
+	public static void main(String[] args) {
+	   A a1 = new A();//Step 1
+	}
+	
+	
+}
 
+Constructor Chaining
+---------------------
+-> When we call one constructor from another constructor it will form chain like flow structure. This is called as constructor chaining
+-> This can be achieved by using this() keyword or Creating Object in another constructor
+
+Example 1:
+----------
+public class A {
+	A(){
+		System.out.println("A");
+	}
+	A(int x){
+		this();
+	}
+	public static void main(String[] args) {
+		A a1 = new A(100);
+	}
+}
+
+Example 2:
+-----------
+public class A {
+	A(){
+		System.out.println("A");
+	}
+	A(int x){
+		A a2 = new A();
+	}
+	public static void main(String[] args) {
+		A a1 = new A(100);
+	}
+}
+
+###############################
+Important Shortcuts in eclipse
+################################
+1. Ctrl + Space
+⚡ Content Assist — suggests code completions.
+
+Example: 
+a. syso  (do control+ space bar)
+b. main (do control+ space bar)
+
+2. Ctrl + 1
+💡 Quick fix — suggests solutions for errors or warnings.
+
+Example: String x = 100; (Press control + 1 to get solutions to fix problem) 
+
+3. Ctrl + O
+🧭 Quick outline — shows methods/fields of the current class.
+
+Example:
+public class Animal {
+
+    private String name;
+    private int age;
+   
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+
+    public void sleep() {
+    	
+        System.out.println(name + " is sleeping.");
+    }
+
+    private void breathe() {
+    	System.out.println(name + " is breathing.");
+    }
+}
+
+-> in the above file when pressed Control + O we will get soo all  content of like like shown below:
+
+Animal 
+-> name
+-> age
+-> Animal(String name, int age)
+-> eat()
+-> sleep() etc.....
+
+4. F3
+🔄 Go to the declaration of a variable, method, or class.
+
+Example: 
+public class Animal {
+
+    private String name;// Will show this step, as variable is declared here
+    private int age;
+   
+    public Animal(String name, int age) {
+        this.name = name; // When placed cusor on this.name, and pressed f3
+        this.age = age;
+    }
+
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+
+    public void sleep() {
+    	
+        System.out.println(name + " is sleeping.");
+    }
+
+    private void breathe() {
+    	System.out.println(name + " is breathing.");
+    }
+}
+
+5. Ctrl + .
+➡️ Jump to the next error or warning in the file.
+public class Dog {
+	
+	int x//This is your first error. When pressed control + .
+	
+	public static void main(String[] args) {
+		int y//It will take you to this error
+	}
+
+}
 
 
 
