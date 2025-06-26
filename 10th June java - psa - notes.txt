@@ -1330,6 +1330,226 @@ public class Dog {
 	}
 
 }
+##########################
+Packages in java
+###########################
+a. Packages are folders created in java to store programs in organized manner
+b. This will make maintainance of the project easy
+c. Naming Convention for packages
+-> Package name cannot be keyword like - new , static, public , in etc...
+-> Donot start package name with capital letters
+-> Package name not to be given as java
+
+d. When you create a class inside package, we have to define package keyword in our program as shown below:
+
+Example:
+package p1;
+public class A {
+
+}
+
+e. Create 2 classes in same package and perform inheritance. Import is not required
+Example:
+package p1;
+public class A {
+
+}
+
+package p1;
+public class B extends A {
+
+}
+f. Create 2 classes in different package and perform inheritance. "Import required"
+
+Example:
+package p1;
+public class A {
+
+}
+
+package p2;
+import p1.A;
+public class C extends A{
+
+}
+
+Example :
+package p1;
+public class A {
+
+}
+package p1;
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+}
+
+Example:
+package p1;
+public class A {
+
+}
+
+package p1;
+public class B {
+	
+}
+
+package p2;
+import p1.*;
+public class C {
+	public static void main(String[] args) {
+		A a1 = new A();
+		B b1 = new B();
+	}
+}
+
+Example:
+package p1;
+public class A {
+
+}
+
+package p2;
+public class A {
+	
+}
+
+package p3;
+public class B {
+	public static void main(String[] args) {
+		p1.A a1 = new p1.A();//---> p2
+		p2.A a2 = new p2.A();//---> p1
+	}
+}
+
+---------------------------------------
+Example:
+
+package p1;
+public class A {
+
+}
+
+package p2;
+public class A {
+	
+}
+
+package p3;
+import p2.A;
+public class B {
+	public static void main(String[] args) {
+		p1.A a1 = new p1.A();//---> p2
+		A a2 = new A();//---> p1
+	}
+}
+
+Example
+--------
+package com.tcs.service;
+
+public class EmailService {
+	public void sendEmail() {
+		System.out.println("Sending Email....");
+	}
+}
+package com.tcs.auth;
+
+import com.tcs.service.EmailService;
+
+public class MainClass {
+	public static void main(String[] args) {
+		EmailService es = new EmailService();
+		es.sendEmail();
+	}
+}
+Output:
+Sending Email....
+
+#######################################
+Object Oriented Programming -  Pillars
+########################################
+
+a. inheritance
+b. polymorphism
+c. encapsulation
+d. abstraction
 
 
+a. inheritance
+######################
+-> Here we inherit the members of parent class to child class so that we can re-use those members
+Example 1:
+---------
+package app_java_1;
+public class Animal {
+	public void eat() {
+		System.out.println("Eating");
+	}
+	public void sleep() {
+		System.out.println("sleeping");
+	}
+}
 
+package app_java_1;
+public class Dog extends Animal{
+	public static void main(String[] args) {
+		Dog d = new Dog();
+		d.eat();
+		d.sleep();
+	}
+}
+Output:
+------
+Eating
+sleeping
+
+Example 2:
+package app_java_1;
+public class Animal {
+	public void eat() {
+		System.out.println("Eating");
+	}
+	public void sleep() {
+		System.out.println("sleeping");
+	}
+}
+Animal.java
+
+package app_java_1;
+public class Dog extends Animal{
+	//eat(),sleep()--->Animal
+}
+Dog.java
+
+package app_java_1;
+public class Cat extends Animal{
+	//eat(),sleep()--->Animal
+}
+Cat.java
+
+package app_java_1;
+public class Cow extends Animal{
+	//eat(),sleep()--->Animal
+}
+Cow.java
+
+package app_java_1;
+public class Root {
+	public static void main(String[] args) {
+		Dog d = new Dog();
+		d.eat();
+		d.sleep();
+		System.out.println("_______");
+		Cat cat = new Cat();
+		cat.eat();
+		cat.sleep();
+		System.out.println("_______");
+		Cow cow = new Cow();
+		cow.eat();
+		cow.sleep();
+	}
+}
+Root.java
