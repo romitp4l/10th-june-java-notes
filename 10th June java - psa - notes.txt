@@ -2852,6 +2852,309 @@ public class Cat extends Dog{
 	}
 }
 
+Example 5:
+----------
+package p1;
+
+public interface Calculator {
+	public void add(int x, int y);
+	public void mul(int x, int y);
+}
+
+package p1;
+public class OrdinaryCalc implements Calculator{
+
+	@Override
+	public void add(int x, int y) {
+		System.out.println(x+y);
+	}
+	
+	@Override
+	public void mul(int x, int y) {
+		System.out.println(x*y);
+	}
+
+}
+
+package p1;
+
+public class SciCalc implements Calculator{
+
+	@Override
+	public void add(int x, int y) {
+		System.out.println(x*x+y*y);
+	}
+	
+	@Override
+	public void mul(int x, int y) {
+		int num1 = x*x;
+		int num2 = y*y;
+		System.out.println(num1*num2);
+	}
+
+}
+package p1;
+
+public class MainCalc {
+	public static void main(String[] args) {
+		OrdinaryCalc oc = new OrdinaryCalc();
+		oc.add(10, 20);
+		oc.mul(10, 20);
+		
+		SciCalc sc = new SciCalc();
+		sc.add(10, 20);
+		sc.mul(10, 20);
+		
+		
+	}
+}
+
+Advantages of interfaces
+---------------------------
+
+
+1. abstraction: hiding of implementation details. That is we define what needs to be developed and not how it needs to be developed
+2. It imposes contract on a class to implement all methods of an interface
+3. Results in good design
+4. loosely coupled
+
+-> All Variables by default in an interface are final and static
+----------------------------------------------------------------
+package p1;
+
+//-> All variables in the given program are final & static
+//-> Hence intialization is mandatory
+public interface A {
+	int MAX_VAL=100;
+	static final int MIN_VAL=0;
+}
+package p1;
+
+public class B {
+	public static void main(String[] args) {
+		System.out.println(A.MAX_VAL);
+		System.out.println(A.MIN_VAL);
+	}
+}
+Output:
+100
+0
+
+#################################################
+Note:
+-> Class to Class Inheritance --> extends
+-> interface to interface Inheritance --> extends
+-> interface to class Inheritance --> implements
+#################################################
+
+
+Example 1:
+---------
+package p1;
+
+public interface A {
+	public void test1();
+}
+package p1;
+
+public interface B extends A{
+	public void test2();
+}
+package p1;
+
+public class C implements B {
+
+	@Override
+	public void test1() {
+		System.out.println("From test1");
+	}
+
+	@Override
+	public void test2() {
+		System.out.println("From test2");
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.test1();
+		c1.test2();
+	}
+
+}
+
+Example 2:
+-----------
+package p1;
+
+public interface A {
+	public void test2();
+}
+package p1;
+
+public interface B {
+	public void test1();
+}
+package p1;
+
+public interface C extends  A,B {
+
+	
+}
+
+Example 3:
+----------
+-> If you do mulitple inheritance on a class then it's parent should be interfaces only
+
+package p1;
+public interface A {
+	public void test2();
+}
+
+package p1;
+public interface B {
+	public void test1();
+}
+
+package p1;
+public class C implements  A,B {
+
+	@Override
+	public void test1() {
+		System.out.println("From test1");
+	}
+
+	@Override
+	public void test2() {
+		System.out.println("From test2");		
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.test1();
+		c1.test2();
+	}
+	
+}
+
+Example 4:
+----------
+-> On class can we perform extends implements together - yes
+-> But ensure extends is used first and then implements
+
+package p1;
+public interface A {
+	public void test2();
+}
+
+package p1;
+public class B {
+	public void test1() {
+		System.out.println("From test1");
+	}
+}
+
+package p1;
+public class C extends B  implements  A {
+	@Override
+	public void test2() {
+		System.out.println("From test2");		
+	}
+	public static void main(String[] args) {
+		C c1 = new C();
+		c1.test1();
+		c1.test2();
+	}
+}
+
+###############################################################
+Question: Can i develop incomplete static method in an interface?
+Answer: We cannot inherit static method & override, hence incomplete static methods are not allowed in an interface
+
+Example:
+package p1;
+public interface A {
+	public static void test2();//-------> Error
+}
+
+Note: In an interface a method can only be public/default, it cannot be private/proptected
+Example
+--------
+package p1;
+
+public interface A {
+	protected void test1();//----->Error
+	private void test2();//--->Error
+	void test3();//----->No Error
+	public void test4();//--->No Error
+}
+
+Example 2:
+---------
+package p1;
+
+public interface A {
+	
+}
+
+package p1;
+//An object of interface cannot be created
+//Reference variable of interface can be created
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();//--->Error
+		A a2;//--->No Error
+	}
+}
+
+Java 8 Features
+###################
+1. default keyword:
+-> Using default keyword we can create complete methods inside interface. This was introduced in java version 8
+
+Example 1:
+--------
+package p1;
+public interface A {
+	default public void test1() {
+		System.out.println("From test1");
+	}
+}
+
+package p1;
+public class B implements A {
+	public static void main(String[] args) {
+		B b1 = new B();
+		b1.test1();
+	}		
+}
+Output:
+From test1
+
+Example 2:
+----------
+package p1;
+public interface A {
+	default public void test1() {
+		System.out.println("From test1");
+	}
+	public void test2();
+}
+
+package p1;
+public class B implements A {
+	public static void main(String[] args) {
+		B b1 = new B();
+		b1.test1();
+		b1.test2();
+	}
+	@Override
+	public void test2() {
+		System.out.println("From test2");
+	}		
+}
+Output:
+-------
+From test1
+From test2
+
 
 
 
