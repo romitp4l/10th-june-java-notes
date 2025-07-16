@@ -4484,12 +4484,185 @@ public class A {
 	}
 	
 }
+##########################
+Logic For Swapping
+##########################
+##########################
+Logic For Swapping
+##########################
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int x = 10;
+		int y = 20;
+		int temp;
+		
+		temp=y;
+		y=x;
+		x=temp;
+		
+		System.out.println(x);
+		System.out.println(y);
+	}
+	
+}
 
 
 
 
+######################################
+Array Sorting
+###################################
 
+-> Compare x[i] > x[i+1], if true swap the element
+-> End of first round of comparision heavy element will go to the botton of the array
+-> Compare x[i] > x[i+1], array length-1 times maximum
 
+Code:
+----
+package p1;
+public class A {
+	public static void main(String[] args) {
+		int[] x = {35,21,22,14};
+		//x[i]->x
+		//x[i+1]-> y
+		int temp;
+		for(int j=0;j<x.length-1;j++) {//j=0, 1, 2
+			for(int i=0;i<x.length-1;i++) {//i=0 1 2 , 0 1 2, 0 1 2
+				if(x[i]>x[i+1]) {
+					temp = x[i+1];
+					x[i+1] = x[i];
+					x[i]= temp;
+				}
+			}
+		}
+		
+		for(int arr:x) {
+			System.out.println(arr);
+		}
+	}
+	
+}
+
+#################
+1. Sort and remove duplicate elements
+2. Get Highest & Lowest Value in an array
+#################
+
+######################
+File Handling in Java
+#######################
+
+Note: Special Characters
+               System.out.print(200);
+		System.out.print("\n");
+		System.out.print(300);
+		System.out.print("\n");
+		System.out.print(200);
+		System.out.print("\t");
+		System.out.print(300);
+
+a. File
+-----------
+Example 1:It holds the given path in variable "f" without check the file exist
+----------------------------------------------------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("E:\\april\\t1.txt");
+		System.out.println(f);
+	}
+}
+
+1. exists() - 
+------------
+a. It is a non static method present inside File class
+b. Return type of this method is boolean
+c. It checks whether the file exists in the given path.
+d. If file exists, it will return true or else false
+
+Example:
+---------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\t100.txt");
+		boolean val = f.exists();
+		System.out.println(val);
+	}
+}
+
+2. delete() - 
+------------
+a. It is a non static method present inside File class
+b. Return type of this method is boolean
+c. It deletes the file exists in the given path.
+d. If file is deleted, it will return true or else false
+
+Example:
+--------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\t1.txt");
+		boolean val = f.delete();
+		System.out.println(val);
+	}
+}
+
+3.mkdir() - 
+------------
+a. It is a non static method present inside File class
+b. Return type of this method is boolean
+c. It creates folder  in the given path.
+d. If folder is created, it will return true or else false
+e. It will not replace existing folder
+
+Example:
+-------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\p2");
+		boolean val = f.mkdir();
+		System.out.println(val);
+	}
+}
+Example: To delete Folder using delete() method
+------------------------------------------------
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\p2");
+		boolean val = f.delete();
+		System.out.println(val);
+	}
+}
+
+Note: delete() method can delete folder/file both
+
+4.length() - 
+------------
+a. It is a non static method present inside File class
+b. Return type of this method is long
+c. It counts characters with white spaces in the given file.
+
+Example- Pankaj Sir academy->18 chars
+
+Example:
+--------
+package p1;
+import java.io.File;
+public class A {
+	public static void main(String[] args) {
+		File f = new File("G:\\april\\t1.txt");
+		long val = f.length();
+		System.out.println(val);
+	}
+}
 
 
 
