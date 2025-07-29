@@ -5428,6 +5428,53 @@ finalize():
 -> This is a method inside Object class and here Garbage collection logic is implemented
 -> We can try calling garbage collector using System.gc(). But will not guarantee 100% execution.
 
+#########################
+Encapsulation in Java
+#########################
+-> Encapsulation is one of the four fundamental Object-Oriented Programming (OOP) principles in Java (along with inheritance, polymorphism, and abstraction). 
+-> It is the mechanism of wrapping variables and methods together as a single unit and restricting direct access to variables.
+
+How to perform Encapsulation:
+-------------------------------
+a. Data hiding – Fields (variables) of a class are made private so they cannot be accessed directly from outside the class.
+
+Public getter and setter methods – These methods are provided to access and update the value of private fields.
+
+Example :
+-----------
+public class A {
+	//Data hiding
+	private int x;
+	private int y;
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+}
+
+
+public class B {
+	public static void main(String[] args) {
+		A a1 = new A();
+		a1.setX(100);
+		a1.setY(200);
+		System.out.println(a1.getX());
+		System.out.println(a1.getX());
+	}
+}
+
+
+
+
 
 
 
