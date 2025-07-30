@@ -176,7 +176,7 @@ Ouput: 0
 Static variables:
 #################
 
-1. We should create static variables inside class but outsiude method with static keyword
+1. We should create static variables inside class but outside method with static keyword
 2. To access static variable we will use below Options
 a. ClassName.variableName
 b. variableName (Contraints)
@@ -265,6 +265,7 @@ public class A {
 }
 Output:
 100
+
 Types of variables in java
 ############################
 
@@ -432,12 +433,12 @@ Example:
 public class A {
 	static A a1;
 	public static void main(String[] args) {
-		System.out.println(a1);
-		a1 = new A();
-		a1.test();
+		System.out.println(a1);//null
+		a1 = new A();//Creating Object
+		a1.test();//Calling test
 	}
 	public void test() {
-		System.out.println(a1);
+		System.out.println(a1);//Pring object address
 	}
 	
 	
