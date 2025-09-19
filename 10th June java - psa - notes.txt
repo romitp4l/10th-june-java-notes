@@ -5523,6 +5523,10 @@ public class B {
 	}
 }
 
+#####################
+Threads in java: - Assignment
+##################
+https://www.youtube.com/watch?v=Uw1tocKJNZw&list=PLbLiFkJgsmq6j_fFlZuy0xIs6upvrML26&index=44
 
 
 
