@@ -862,11 +862,12 @@ public class A {
 		
 	}
 }
-
 Example 2:
 ----------
 -> To call a constructor we have to create object.
--> Whenever we creat object constructor is being called
+-> Whenever we create object constructor is being called
+-> Only after constructor calling object will get initialized. Initialization of object means loading of non static members to it
+-> Note: Constructors are never loaded to the object
 public class A {
 	A(){
 		System.out.println(100);
@@ -881,6 +882,41 @@ Output:
 100
 100
 100
+
+Example 1:Example for default constructor
+public class A {//--->Correct
+	public static void main(String[] args) {
+		A a1 = new A();
+	}
+
+}
+Default Constructors in java
+Note: When we run the above progam the following things will happen
+Step 1: When program is compliled, It will generate byte code that is stored inside a A.class file
+Step 2: As the program does not have constructor mentioned, then during compilation automatically "empty body no args constructor" will be added in .class file and hence object initialization will take place. This concept is called as default constructor
+Note: 
+1. Default constructors are not applicable when object with values are created
+2. Default constructors are not applicable when object with and without values are created  together
+
+Example 2:
+
+public class A {
+
+public static void main(String[] args) {
+		A a1 = new A(100);//Default constructor not applicable, hence error
+	}
+
+}
+
+public class A {
+A(int x){
+}
+public static void main(String[] args) {
+        A a1 = new A();//Default constructor not applicable, hence error
+		A a1 = new A(100);
+	}
+
+}
 
 -> If you mention return type for a constructor. Then it is treated as a method
 
@@ -5527,6 +5563,7 @@ public class B {
 Threads in java: - Assignment
 ##################
 https://www.youtube.com/watch?v=Uw1tocKJNZw&list=PLbLiFkJgsmq6j_fFlZuy0xIs6upvrML26&index=44
+
 
 
 
