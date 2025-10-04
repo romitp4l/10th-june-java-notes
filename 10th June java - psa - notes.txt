@@ -1505,6 +1505,45 @@ public class MainClass {
 Output:
 Sending Email....
 
+###########################################################################
+Importing only static members from the different class in different package
+###########################################################################
+
+src/
+ ├── pack1/
+ │    └── A.java
+ └── pack2/
+      └── B.java
+
+
+// File: src/pack1/A.java
+package pack1;
+
+public class A {
+    public static final String GREETING = "Hello from Class A in pack1!";
+    public static int add(int x, int y) {
+        return x + y;
+    }
+}
+
+
+
+// File: src/pack2/B.java
+package pack2;
+
+// Importing only static members from class A in another package
+import static pack1.A.GREETING;
+import static pack1.A.add;
+
+public class B {
+    public static void main(String[] args) {
+        System.out.println(GREETING);   // using GREETING directly
+        int result = add(15, 25);       // using add() directly
+        System.out.println("Sum: " + result);
+    }
+}
+
+
 #######################################
 Object Oriented Programming -  Pillars
 ########################################
@@ -5563,6 +5602,7 @@ public class B {
 Threads in java: - Assignment
 ##################
 https://www.youtube.com/watch?v=Uw1tocKJNZw&list=PLbLiFkJgsmq6j_fFlZuy0xIs6upvrML26&index=44
+
 
 
 
